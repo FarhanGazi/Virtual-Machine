@@ -190,7 +190,6 @@ int execute()
 		switch (FETCH)
 		{
 		case HALT:
-			IP++;
 			return 0;
 			break;
 
@@ -282,7 +281,6 @@ int execute()
 			STACK[SP] = IP;
 
 			SP++;
-
 			IP = position;
 			break;
 
@@ -314,8 +312,7 @@ int execute()
 			position = FETCH;
 			if (!(position >= 0) || !(position < IN))
 				return 8;
-			if ((SP > 0) && (STACK[SP--] != 0)){		
-				SP--;
+			if ((SP > 0) && (STACK[--SP] != 0)){	
 				IP = position;
 			} 
 			else
@@ -332,8 +329,7 @@ int execute()
 			position = FETCH;
 			if (!(position >= 0) || !(position < IN))
 				return 8;
-			if ((SP > 0) && (STACK[SP--] > 0)){		
-				SP--;
+			if ((SP > 0) && (STACK[--SP] > 0)){	
 				IP = position;
 			} 
 			else
@@ -350,8 +346,7 @@ int execute()
 			position = FETCH;
 			if (!(position >= 0) || !(position < IN))
 				return 8;
-			if ((SP > 0) && (STACK[SP--] < 0)){		
-				SP--;
+			if ((SP > 0) && (STACK[--SP] < 0)){	
 				IP = position;
 			} 
 			else
@@ -488,6 +483,7 @@ int bootstrap(char *option, char *filename)
 	{
 		outcome = print();
 	}
+	
 
 	fclose(inputFile);
 	free(INSTRUCTIONS);

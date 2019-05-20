@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STACK_SIZE 256
+#define STACK_SIZE 16000
 #define REGISTER_SIZE 32
 
 /** Instructions **/
